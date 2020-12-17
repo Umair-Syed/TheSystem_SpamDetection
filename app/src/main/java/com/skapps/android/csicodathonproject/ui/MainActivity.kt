@@ -1,7 +1,8 @@
-package com.skapps.android.csicodathonproject
+package com.skapps.android.csicodathonproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.skapps.android.csicodathonproject.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

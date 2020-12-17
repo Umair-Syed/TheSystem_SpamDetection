@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/loginFirstFragment">
+
+    <fragment
+        android:id="@+id/loginFirstFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.login.LoginFirstFragment"
+        android:label="fragment_login_first"
+        tools:layout="@layout/fragment_login_first" >
+        <action
+            android:id="@+id/action_loginFirstFragment_to_loginSecondFragment"
+            app:destination="@id/loginSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginSecondFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.login.LoginSecondFragment"
+        android:label="fragment_login_second"
+        tools:layout="@layout/fragment_login_second" >
+        <action
+            android:id="@+id/action_loginSecondFragment_to_loginThirdFragment"
+            app:destination="@id/loginThirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginThirdFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.login.LoginThirdFragment"
+        android:label="fragment_login_third"
+        tools:layout="@layout/fragment_login_third" >
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="ccode"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_loginThirdFragment_to_loginFourthFragment"
+            app:destination="@id/loginFourthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFourthFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.login.LoginFourthFragment"
+        android:label="fragment_login_fourth"
+        tools:layout="@layout/fragment_login_fourth" />
+</navigation>

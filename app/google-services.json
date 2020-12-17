@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "682803327067",
+    "project_id": "the-system-b0d7a",
+    "storage_bucket": "the-system-b0d7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682803327067:android:4ef702d478b7152ee10f7e",
+        "android_client_info": {
+          "package_name": "com.skapps.android.csicodathonproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682803327067-9sjo13jdnatfvn1bj6m75008d3btrec9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skapps.android.csicodathonproject",
+            "certificate_hash": "1e6aa9dbea5689eb9ba46b7a7ab583b85ecf1a25"
+          }
+        },
+        {
+          "client_id": "682803327067-4o5hgmvj1b3d9e05stbmu28ugf3pm25t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB8OUJ66q3NXhNDj6JkSAgB2aunJlk7G8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682803327067-4o5hgmvj1b3d9e05stbmu28ugf3pm25t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
