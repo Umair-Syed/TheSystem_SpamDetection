@@ -5,7 +5,7 @@ package com.skapps.android.csicodathonproject.data
  */
 
 data class SUser(
-    val displayName: String,
+    val name: String,
     val email: String,
     val isAdmin: Boolean
 )

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
+import com.skapps.android.csicodathonproject.ui.home.MainActivity
 import com.skapps.android.csicodathonproject.ui.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {

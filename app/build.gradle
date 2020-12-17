@@ -77,4 +77,9 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha05"
 
     implementation 'com.chaos.view:pinview:1.4.4'
+
+    // Nav drawer
+    def nav_version = "2.3.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 }

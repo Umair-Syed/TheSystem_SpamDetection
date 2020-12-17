@@ -13,12 +13,11 @@ import androidx.datastore.preferences.createDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.R
 import com.skapps.android.csicodathonproject.data.SUser
 import com.skapps.android.csicodathonproject.databinding.FragmentLoginFourthBinding
-import com.skapps.android.csicodathonproject.ui.MainActivity
+import com.skapps.android.csicodathonproject.ui.home.MainActivity
 import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_USERS
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -46,6 +45,8 @@ class LoginFourthFragment : Fragment(R.layout.fragment_login_fourth) {
         }
 
 
+
+
         binding.submitBtn.setOnClickListener {
             val name = binding.name.text.toString()
             val email = binding.email.text.toString()
@@ -56,7 +57,8 @@ class LoginFourthFragment : Fragment(R.layout.fragment_login_fourth) {
                     isAdminFlow.collect {isAdmin ->
                         Log.d(TAG, "onViewCreated: called $isAdmin")
                         // writing to fire store
-                        userCollectionRef.document().set(SUser(name, email, isAdmin)).addOnSuccessListener {
+                        if(user?.uid != null)
+                        userCollectionRef.document(user.uid).set(SUser(name, email, isAdmin)).addOnSuccessListener {
                             binding.progressBar.visibility = View.GONE
                             startActivity(Intent(requireActivity(), MainActivity::class.java))
                             requireActivity().finish()
