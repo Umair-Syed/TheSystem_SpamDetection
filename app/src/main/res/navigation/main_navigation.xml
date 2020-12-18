@@ -9,10 +9,31 @@
         android:id="@+id/homeFragment"
         android:name="com.skapps.android.csicodathonproject.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/allUsersFragment"
         android:name="com.skapps.android.csicodathonproject.ui.home.AllUsersFragment"
         android:label="fragment_all_users"
         tools:layout="@layout/fragment_all_users" />
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.home.AddProductFragment"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.home.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
+        <argument
+            android:name="product"
+            app:argType="com.skapps.android.csicodathonproject.data.Product" />
+    </fragment>
 </navigation>

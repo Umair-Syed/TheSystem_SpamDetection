@@ -45,4 +45,10 @@
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">#35C600</item>
     </style>
+
+    <style name="RatingBarTheme" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#636363</item>
+        <item name="colorControlActivated">#F57F17</item>
+    </style>
+
 </resources>
