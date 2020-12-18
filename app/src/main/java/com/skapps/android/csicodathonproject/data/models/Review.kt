@@ -9,6 +9,9 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class Review(
+    @Exclude
+    @get:Exclude
+    val rid: String,
     val uid: String,
     val name: String,
     val pid: String,

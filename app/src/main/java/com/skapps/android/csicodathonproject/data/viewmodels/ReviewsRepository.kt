@@ -31,6 +31,7 @@ class ReviewsRepository @Inject constructor(){
                 val list = ArrayList<Review>()
                 for (docSnapshot in queryDocSnapshot) {
                     val review = Review(
+                        docSnapshot.id,
                         docSnapshot.getString("uid") ?: "",
                         docSnapshot.getString("name") ?: "",
                         docSnapshot.getString("pid") ?: "",

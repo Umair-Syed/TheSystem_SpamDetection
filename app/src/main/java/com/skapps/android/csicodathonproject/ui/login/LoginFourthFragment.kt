@@ -59,7 +59,7 @@ class LoginFourthFragment : Fragment(R.layout.fragment_login_fourth) {
                         Log.d(TAG, "onViewCreated: called $isAdmin")
                         // writing to fire store
                         if(user?.uid != null)
-                        userCollectionRef.document(user.uid).set(SUser(name, email, isAdmin)).addOnSuccessListener {
+                        userCollectionRef.document(user.uid).set(SUser(name, email, isAdmin, false)).addOnSuccessListener {
                             userProfileChangeRequest {
                                 displayName = name
                                 user.updateProfile(this.build()).addOnSuccessListener {

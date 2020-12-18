@@ -216,6 +216,7 @@ class LoginThirdFragment : Fragment(R.layout.fragment_login_third) {
                         "Something went wrong! try again",
                         Toast.LENGTH_LONG
                     ).show()
+                    binding.progressBarOtp.visibility = View.INVISIBLE
                 }
             }
     }

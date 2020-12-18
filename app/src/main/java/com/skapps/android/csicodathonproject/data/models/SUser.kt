@@ -7,5 +7,6 @@ package com.skapps.android.csicodathonproject.data.models
 data class SUser(
     val name: String,
     val email: String,
-    val isAdmin: Boolean
+    val admin: Boolean,
+    val blocked: Boolean
 )
