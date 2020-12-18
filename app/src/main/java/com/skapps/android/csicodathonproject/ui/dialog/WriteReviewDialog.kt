@@ -40,7 +40,7 @@ class WriteReviewDialog(private val product: Product) : DialogFragment(){
         val db = FirebaseFirestore.getInstance()
         val reviewsCollection = db.collection(KEY_COLLECTION_PRODUCTS).document(product.id)
             .collection(KEY_SUB_COLLECTION_REVIEWS)
-        var user = FirebaseAuth.getInstance().currentUser
+        val user = FirebaseAuth.getInstance().currentUser
 
         submitBtn.setOnClickListener {
             if(validateForm(heading, description)){
@@ -49,7 +49,7 @@ class WriteReviewDialog(private val product: Product) : DialogFragment(){
                 val head = heading.text.toString()
                 val des = description.text.toString()
                 val rating = ratingBar.rating
-                val review = user?.uid?.let { it1 -> Review(it1, product.id, head, des, rating.toDouble()) }
+                val review = user?.uid?.let { it1 -> Review(it1, user.displayName ?:"", product.id, head, des, rating.toDouble()) }
                 if (review != null) {
                     reviewsCollection.add(review)
                         .addOnSuccessListener {

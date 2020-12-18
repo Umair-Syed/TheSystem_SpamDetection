@@ -1,6 +1,7 @@
 package com.skapps.android.csicodathonproject.data.models
 
 import android.os.Parcelable
+import com.google.firebase.firestore.Exclude
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -9,6 +10,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Review(
     val uid: String,
+    val name: String,
     val pid: String,
     val heading: String,
     val description: String,

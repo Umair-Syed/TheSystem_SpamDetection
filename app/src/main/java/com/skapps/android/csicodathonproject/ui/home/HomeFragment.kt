@@ -41,7 +41,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductsListAdapter.ItemA
 
         setUpFab()
 
-//        binding.productsRecyclerView.adapter = ProductsListAdapter(requireContext(), productList,this)
         binding.productsRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
 

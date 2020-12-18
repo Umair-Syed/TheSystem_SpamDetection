@@ -13,6 +13,7 @@ import androidx.datastore.preferences.createDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.R
 import com.skapps.android.csicodathonproject.data.models.SUser
@@ -59,10 +60,15 @@ class LoginFourthFragment : Fragment(R.layout.fragment_login_fourth) {
                         // writing to fire store
                         if(user?.uid != null)
                         userCollectionRef.document(user.uid).set(SUser(name, email, isAdmin)).addOnSuccessListener {
-                            binding.progressBar.visibility = View.GONE
-                            startActivity(Intent(requireActivity(), MainActivity::class.java))
-                            requireActivity().finish()
-                        }.addOnFailureListener {e ->
+                            userProfileChangeRequest {
+                                displayName = name
+                                user.updateProfile(this.build()).addOnSuccessListener {
+                                    binding.progressBar.visibility = View.GONE
+                                    startActivity(Intent(requireActivity(), MainActivity::class.java))
+                                    requireActivity().finish()
+                                }
+                            }
+                        }.addOnFailureListener { e ->
                             binding.progressBar.visibility = View.GONE
                             Toast.makeText(activity, e.localizedMessage ?: "Something went wrong!", Toast.LENGTH_SHORT)
                                 .show()
