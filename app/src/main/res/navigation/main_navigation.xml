@@ -34,6 +34,18 @@
         tools:layout="@layout/fragment_product_details" >
         <argument
             android:name="product"
-            app:argType="com.skapps.android.csicodathonproject.data.Product" />
+            app:argType="com.skapps.android.csicodathonproject.data.models.Product" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_reviewsFragment"
+            app:destination="@id/reviewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.home.ReviewsFragment"
+        android:label="fragment_reviews"
+        tools:layout="@layout/fragment_reviews" >
+        <argument
+            android:name="product"
+            app:argType="com.skapps.android.csicodathonproject.data.models.Product" />
     </fragment>
 </navigation>

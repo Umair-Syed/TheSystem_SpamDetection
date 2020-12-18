@@ -1,4 +1,4 @@
-package com.skapps.android.csicodathonproject.data
+package com.skapps.android.csicodathonproject.data.models
 
 /**
  * Created by Syed Umair on 17/12/2020.

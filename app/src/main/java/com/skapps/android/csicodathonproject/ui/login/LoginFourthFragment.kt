@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.R
-import com.skapps.android.csicodathonproject.data.SUser
+import com.skapps.android.csicodathonproject.data.models.SUser
 import com.skapps.android.csicodathonproject.databinding.FragmentLoginFourthBinding
 import com.skapps.android.csicodathonproject.ui.home.MainActivity
 import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_USERS

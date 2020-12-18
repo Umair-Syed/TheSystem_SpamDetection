@@ -1,9 +1,8 @@
 package com.skapps.android.csicodathonproject.data.viewmodels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
-import com.skapps.android.csicodathonproject.data.Product
+import com.skapps.android.csicodathonproject.data.models.Product
 import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_PRODUCTS
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -34,7 +33,8 @@ class HomeRepository @Inject constructor() {
                         docSnapshot.getString("name") ?: "",
                         docSnapshot.getString("description") ?: "",
                         docSnapshot.getString("imageUrl") ?: "",
-                        docSnapshot.getDouble("rating") ?: 0.0
+                        docSnapshot.getDouble("rating") ?: 0.0,
+                        docSnapshot.getLong("ratingCount") ?: 0
                     )
                     list.add(product)
                 }

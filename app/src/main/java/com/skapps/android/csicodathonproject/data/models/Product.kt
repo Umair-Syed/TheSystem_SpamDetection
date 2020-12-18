@@ -1,4 +1,4 @@
-package com.skapps.android.csicodathonproject.data
+package com.skapps.android.csicodathonproject.data.models
 
 import android.os.Parcelable
 import com.google.firebase.firestore.Exclude
@@ -16,5 +16,6 @@ data class Product(
     val name: String,
     val description: String,
     val imageUrl: String,
-    val rating: Double
+    val rating: Double,
+    val ratingCount: Long
 ) : Parcelable

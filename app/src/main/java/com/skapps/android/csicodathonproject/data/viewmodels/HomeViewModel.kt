@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.skapps.android.csicodathonproject.data.Product
+import com.skapps.android.csicodathonproject.data.models.Product
 
 /**
  * Created by Syed Umair on 18/12/2020.

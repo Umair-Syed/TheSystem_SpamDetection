@@ -2,17 +2,14 @@ package com.skapps.android.csicodathonproject.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.R
-import com.skapps.android.csicodathonproject.data.Product
+import com.skapps.android.csicodathonproject.data.models.Product
 import com.skapps.android.csicodathonproject.databinding.FragmentAddProductBinding
 import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_PRODUCTS
-import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_USERS
 
 
 class AddProductFragment : Fragment(R.layout.fragment_add_product) {
@@ -37,7 +34,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
                 val name = binding.title.editText?.text.toString()
                 val description = binding.description.editText?.text.toString()
-                val product = user?.uid?.let { it1 -> Product("",it1, name, description, "#", 0.0) }
+                val product = user?.uid?.let { it1 -> Product("",it1, name, description, "#", 0.0, 0) }
                 if (product != null) {
                     productsCollectionRef.document().set(product)
                         .addOnSuccessListener {

@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.skapps.android.csicodathonproject.R
-import com.skapps.android.csicodathonproject.data.Product
+import com.skapps.android.csicodathonproject.data.models.Product
 import com.skapps.android.csicodathonproject.databinding.ListItemProductBinding
-import kotlinx.android.synthetic.main.list_item_product.view.*
 
 /**
  * Created by Syed Umair on 18/12/2020.
