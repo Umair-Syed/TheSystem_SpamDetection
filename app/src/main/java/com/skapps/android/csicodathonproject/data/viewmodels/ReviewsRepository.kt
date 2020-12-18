@@ -37,7 +37,8 @@ class ReviewsRepository @Inject constructor(){
                         docSnapshot.getString("pid") ?: "",
                         docSnapshot.getString("heading") ?: "",
                         docSnapshot.getString("description") ?: "",
-                        docSnapshot.getDouble("rating") ?: 0.0
+                        docSnapshot.getDouble("rating") ?: 0.0,
+                        docSnapshot.getBoolean("spam") ?: false
                     )
                     list.add(review)
                 }

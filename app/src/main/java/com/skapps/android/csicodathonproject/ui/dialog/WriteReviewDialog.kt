@@ -49,7 +49,7 @@ class WriteReviewDialog(private val product: Product) : DialogFragment(){
                 val head = heading.text.toString()
                 val des = description.text.toString()
                 val rating = ratingBar.rating
-                val review = user?.uid?.let { it1 -> Review("",it1, user.displayName ?:"", product.id, head, des, rating.toDouble()) }
+                val review = user?.uid?.let { it1 -> Review("",it1, user.displayName ?:"", product.id, head, des, rating.toDouble(), false) }
                 if (review != null) {
                     reviewsCollection.add(review)
                         .addOnSuccessListener {

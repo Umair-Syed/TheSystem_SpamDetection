@@ -1,5 +1,6 @@
 package com.skapps.android.csicodathonproject.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.datastore.core.DataStore
@@ -12,12 +13,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.android.csicodathonproject.R
+import com.skapps.android.csicodathonproject.ReviewListeningService
 import com.skapps.android.csicodathonproject.data.models.Product
 import com.skapps.android.csicodathonproject.data.viewmodels.HomeViewModel
 import com.skapps.android.csicodathonproject.databinding.FragmentHomeBinding
 import com.skapps.android.csicodathonproject.ui.login.DATA_STORE_KEY
 import com.skapps.android.csicodathonproject.ui.login.PREF_KEY_IS_ADMIN
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
@@ -39,7 +43,23 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductsListAdapter.ItemA
             (activity as MainActivity).supportActionBar?.title = "Products"
         }
 
-        setUpFab()
+        val dataStore: DataStore<Preferences> = requireActivity().createDataStore(
+            name = DATA_STORE_KEY
+        )
+        val isAdminKey = preferencesKey<Boolean>(PREF_KEY_IS_ADMIN)
+        val isAdminFlow: Flow<Boolean> = dataStore.data.map {
+            it[isAdminKey] ?: false
+        }
+
+        setUpFab(isAdminFlow)
+        CoroutineScope(Dispatchers.IO).launch {
+            isAdminFlow.collect {isAdmin ->
+                if(isAdmin){
+                    val serviceIntent = Intent(requireContext(), ReviewListeningService::class.java)
+                    requireContext().startService(serviceIntent)
+                }
+            }
+        }
 
         binding.productsRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
@@ -56,14 +76,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductsListAdapter.ItemA
     }
 
     //admin only
-    private fun setUpFab() {
-        val dataStore: DataStore<Preferences> = requireActivity().createDataStore(
-            name = DATA_STORE_KEY
-        )
-        val isAdminKey = preferencesKey<Boolean>(PREF_KEY_IS_ADMIN)
-        val isAdminFlow: Flow<Boolean> = dataStore.data.map {
-            it[isAdminKey] ?: false
-        }
+    private fun setUpFab(isAdminFlow: Flow<Boolean>) {
 
         lifecycleScope.launch {
             isAdminFlow.collect { isAdmin ->

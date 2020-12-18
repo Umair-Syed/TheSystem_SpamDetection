@@ -26,6 +26,10 @@
         <activity android:name=".ui.home.MainActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
 
+        <receiver android:name=".NotificationReceiver" />
+
+        <service android:name=".ReviewListeningService"/>
+
     </application>
 
 </manifest>

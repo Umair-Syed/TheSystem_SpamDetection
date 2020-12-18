@@ -18,7 +18,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.R
 import com.skapps.android.csicodathonproject.databinding.FragmentReviewDetailsBinding
-import com.skapps.android.csicodathonproject.databinding.FragmentReviewsBinding
 import com.skapps.android.csicodathonproject.ui.dialog.WriteReviewDialog
 import com.skapps.android.csicodathonproject.ui.login.DATA_STORE_KEY
 import com.skapps.android.csicodathonproject.ui.login.PREF_KEY_IS_ADMIN
@@ -38,7 +37,7 @@ class ReviewDetailsFragment : Fragment(R.layout.fragment_review_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentReviewDetailsBinding.bind(view)
+        binding = com.skapps.android.csicodathonproject.databinding.FragmentReviewDetailsBinding.bind(view)
 
         if (activity != null) {
             (activity as MainActivity).supportActionBar?.title = "Review"

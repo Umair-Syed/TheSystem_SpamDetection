@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +14,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.preferencesKey
+import androidx.datastore.preferences.createDataStore
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,11 +31,19 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.skapps.android.csicodathonproject.R
 import com.skapps.android.csicodathonproject.databinding.ActivityMainBinding
+import com.skapps.android.csicodathonproject.ui.login.DATA_STORE_KEY
 import com.skapps.android.csicodathonproject.ui.login.LoginActivity
+import com.skapps.android.csicodathonproject.ui.login.PREF_KEY_IS_ADMIN
 import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_USERS
 import com.skapps.android.csicodathonproject.util.KEY_USER_DOC_EMAIL
 import com.skapps.android.csicodathonproject.util.KEY_USER_DOC_NAME
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 private const val TAG = "MainActivity"
 
@@ -140,6 +154,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return handled
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.activity_main_drawer, menu)
+//        val blockedUsersItem = menu?.findItem(R.id.blocked_users)
+//        val spamItem = menu?.findItem(R.id.spams)
+//
+//        val dataStore: DataStore<Preferences> = createDataStore(
+//            name = DATA_STORE_KEY
+//        )
+//        val isAdminKey = preferencesKey<Boolean>(PREF_KEY_IS_ADMIN)
+//        val isAdminFlow: Flow<Boolean> = dataStore.data.map {
+//            it[isAdminKey] ?: false
+//        }
+//
+//        return true
+//    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)

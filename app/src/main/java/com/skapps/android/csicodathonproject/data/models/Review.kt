@@ -17,5 +17,6 @@ data class Review(
     val pid: String,
     val heading: String,
     val description: String,
-    val rating: Double
+    val rating: Double,
+    val spam: Boolean
 ) : Parcelable
