@@ -29,8 +29,11 @@ import com.skapps.android.csicodathonproject.ui.login.LoginActivity
 import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_USERS
 import com.skapps.android.csicodathonproject.util.KEY_USER_DOC_EMAIL
 import com.skapps.android.csicodathonproject.util.KEY_USER_DOC_NAME
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "MainActivity"
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
     private val db = FirebaseFirestore.getInstance()

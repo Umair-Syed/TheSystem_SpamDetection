@@ -10,4 +10,5 @@ import com.skapps.android.csicodathonproject.R
 
 class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
 
+
 }

@@ -37,7 +37,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
                 val name = binding.title.editText?.text.toString()
                 val description = binding.description.editText?.text.toString()
-                val product = user?.uid?.let { it1 -> Product(it1, name, description, "#", 0.0) }
+                val product = user?.uid?.let { it1 -> Product("",it1, name, description, "#", 0.0) }
                 if (product != null) {
                     productsCollectionRef.document().set(product)
                         .addOnSuccessListener {

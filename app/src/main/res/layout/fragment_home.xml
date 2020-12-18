@@ -8,6 +8,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="60dp"
         android:id="@+id/products_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -27,13 +28,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_add_24"
-        app:backgroundTint="@color/secondaryColor"
+        app:backgroundTint="@color/primaryColor"
         app:maxImageSize="35dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="32dp"
-        app:tint="@color/primaryColor"
+        app:tint="@color/secondaryColor"
         app:elevation="6dp"
         android:contentDescription="Add new Product" />
 

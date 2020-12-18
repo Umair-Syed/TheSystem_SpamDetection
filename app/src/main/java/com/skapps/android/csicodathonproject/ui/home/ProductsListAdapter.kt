@@ -15,10 +15,10 @@ import kotlinx.android.synthetic.main.list_item_product.view.*
  */
 class ProductsListAdapter(
     private val context: Context,
+    private val productList: ArrayList<Product>,
     private val listener: ItemAdapterListener
 ) : RecyclerView.Adapter<ProductsListAdapter.ProductsViewHolder>() {
 
-    private val productList = ArrayList<Product>()
 
     interface ItemAdapterListener {
         fun onItemClicked(product: Product)
