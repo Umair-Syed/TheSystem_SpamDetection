@@ -25,5 +25,7 @@ A sophisticated system is built to detect spam review. Detection process involve
 </ol>
 
 <h3>Screenshots</h3>
+<img src="/screenshots/sc1.jpg">     <img src="/screenshots/sc2.jpg">
+
 
    
