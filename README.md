@@ -17,9 +17,9 @@ Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STAT
 <b>Note:</b> This app is not fully tested so unexpected behaviour may occur in some devices.
 
 <h2>Spam detection</h2>
-A sophisticated system is built to detect spam review. Detection process involves two phases
+A sophisticated system is built to detect spam reviews. Detection process involves two phases
 <ol>
-  <li>Logically detecting if user has reviewed multiple times on same product</li>
+  <li>Logically detecting if user has reviewed multiple times on the same product</li>
   <li>Machine learning classification model (using Tensorflow lite) is used to analyze text and classify review into <i>truthful</i> or <i>deceptive</i>.
       Dataset is downloaded from Kaggle</li>
 </ol>
