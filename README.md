@@ -24,8 +24,10 @@ A sophisticated system is built to detect spam review. Detection process involve
       Dataset is downloaded from Kaggle</li>
 </ol>
 
-<h2>Screenshots</h2>
+[<h3>Check out Jupyter Notebook</h3>](classification.ipynb)
+Tensorflow lite is used to embed model into Android app.
 
+<h2>Screenshots</h2>
 <table >
   <tr>
     <td><img src="/screenshots/sc1.jpg" height="150%"></td>
@@ -52,6 +54,3 @@ A sophisticated system is built to detect spam review. Detection process involve
 
 
 
-
-
-   
