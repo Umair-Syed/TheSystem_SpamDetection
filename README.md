@@ -25,14 +25,17 @@ A sophisticated system is built to detect spam review. Detection process involve
 </ol>
 
 <h3>Screenshots</h3>
-<img src="/screenshots/sc1.jpg">  <img src="/screenshots/sc2.jpg" height="50%" width="50%">
-<img src="/screenshots/sc3.jpg" height="50%" width="50%">
-<img src="/screenshots/sc4.jpg" height="50%" width="50%">
-<img src="/screenshots/sc5.jpg" height="50%" width="50%">
-<img src="/screenshots/sc6.jpg" height="50%" width="50%">
-<img src="/screenshots/sc7.jpg" height="50%" width="50%">
-<img src="/screenshots/sc8.jpg" height="50%" width="50%">
-<img src="/screenshots/sc9.jpg" height="50%" width="50%">
+
+<img src="/screenshots/sc1.jpg">  
+<img src="/screenshots/sc9.jpg" height="30%" width="30%">
+<img src="/screenshots/sc2.jpg" height="30%" width="30%">
+<img src="/screenshots/sc3.jpg" height="30%" width="30%">
+<img src="/screenshots/sc4.jpg" height="30%" width="30%">
+<img src="/screenshots/sc5.jpg" height="30%" width="30%">
+<img src="/screenshots/sc6.jpg" height="30%" width="30%">
+<img src="/screenshots/sc7.jpg" height="30%" width="30%">
+<img src="/screenshots/sc8.jpg" height="30%" width="30%">
+
 
 
    
