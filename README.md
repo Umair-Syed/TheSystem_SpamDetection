@@ -24,17 +24,33 @@ A sophisticated system is built to detect spam review. Detection process involve
       Dataset is downloaded from Kaggle</li>
 </ol>
 
-<h3>Screenshots</h3>
+<h2>Screenshots</h2>
 
-<img src="/screenshots/sc1.jpg">  
-<img src="/screenshots/sc9.jpg" height="30%" width="30%">
-<img src="/screenshots/sc2.jpg" height="30%" width="30%">
-<img src="/screenshots/sc3.jpg" height="30%" width="30%">
-<img src="/screenshots/sc4.jpg" height="30%" width="30%">
-<img src="/screenshots/sc5.jpg" height="30%" width="30%">
-<img src="/screenshots/sc6.jpg" height="30%" width="30%">
-<img src="/screenshots/sc7.jpg" height="30%" width="30%">
-<img src="/screenshots/sc8.jpg" height="30%" width="30%">
+<table >
+  <tr>
+    <td><img src="/screenshots/sc1.jpg" height="150%"></td>
+    <td><img src="/screenshots/sc9.jpg" height="40%" ></td>
+  </tr>
+  
+  <tr>
+    <td><img src="/screenshots/sc2.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc3.jpg" height="40%" ></td>
+  </tr>
+   <tr>
+    <td><img src="/screenshots/sc4.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc5.jpg" height="40%" ></td>
+  </tr>
+   <tr>
+    <td><img src="/screenshots/sc6.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc7.jpg" height="40%" ></td>
+  </tr>
+   <tr>
+    <td><img src="/screenshots/sc8.jpg" height="40%" ></td>   
+  </tr>
+</table>
+
+
+
 
 
 
