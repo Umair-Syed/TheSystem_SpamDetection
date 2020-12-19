@@ -17,13 +17,43 @@ Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STAT
 <b>Note:</b> This app is not fully tested so unexpected behaviour may occur in some devices.
 
 <h2>Spam detection</h2>
-A sophisticated system is built to detect spam review. Detection process involves two phases
+A sophisticated system is built to detect spam reviews. Detection process involves two phases
 <ol>
-  <li>Logically detecting if user has reviewed multiple times on same product</li>
+  <li>Logically detecting if user has reviewed multiple times on the same product</li>
   <li>Machine learning classification model (using Tensorflow lite) is used to analyze text and classify review into <i>truthful</i> or <i>deceptive</i>.
       Dataset is downloaded from Kaggle</li>
 </ol>
+<blockquote>If a review is detected as spam in both the phases, then review is confirmed to be spam and <b>Alert Notification</b> is show to admin.
+  If review is detected as spam in anyone of the phase, then review is marked as <i>potential spam</i> and admin is notified.</blockquote>
 
-<h3>Screenshots</h3>
 
-   
+[<h3>Check out Jupyter Notebook</h3>](classification.ipynb)
+Tensorflow lite is used to embed model into Android app.
+
+<h2>Screenshots</h2>
+<table >
+  <tr>
+    <td><img src="/screenshots/sc1.jpg" height="150%"></td>
+    <td><img src="/screenshots/sc9.jpg" height="40%" ></td>
+  </tr>
+  
+  <tr>
+    <td><img src="/screenshots/sc2.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc3.jpg" height="40%" ></td>
+  </tr>
+   <tr>
+    <td><img src="/screenshots/sc4.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc5.jpg" height="40%" ></td>
+  </tr>
+   <tr>
+    <td><img src="/screenshots/sc6.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc7.jpg" height="40%" ></td>
+  </tr>
+   <tr>
+    <td><img src="/screenshots/sc8.jpg" height="40%" ></td>   
+  </tr>
+</table>
+
+
+
+
