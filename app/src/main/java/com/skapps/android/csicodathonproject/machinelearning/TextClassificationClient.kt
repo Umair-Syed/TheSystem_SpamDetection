@@ -7,10 +7,6 @@ import org.tensorflow.lite.task.text.nlclassifier.BertNLClassifier
 import java.io.IOException
 
 
-/**
- * Created by Syed Umair on 19/12/2020.
- */
-
 private const val TAG = "TextClassificationClien"
 const val MODEL_PATH = "model.tflite"
 class TextClassificationClient(private val context: Context) {
