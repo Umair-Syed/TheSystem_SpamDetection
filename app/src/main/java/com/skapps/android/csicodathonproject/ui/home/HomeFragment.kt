@@ -1,6 +1,5 @@
 package com.skapps.android.csicodathonproject.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.datastore.core.DataStore
@@ -12,26 +11,27 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.R
-import com.skapps.android.csicodathonproject.ReviewListeningService
 import com.skapps.android.csicodathonproject.data.models.Product
 import com.skapps.android.csicodathonproject.data.viewmodels.HomeViewModel
 import com.skapps.android.csicodathonproject.databinding.FragmentHomeBinding
 import com.skapps.android.csicodathonproject.ui.login.DATA_STORE_KEY
 import com.skapps.android.csicodathonproject.ui.login.PREF_KEY_IS_ADMIN
+import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_PRODUCTS
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
+
+
+
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), ProductsListAdapter.ItemAdapterListener {
     private lateinit var binding: FragmentHomeBinding
-
-//    private var productList = ArrayList<Product>()
+    
     private val viewModel by viewModels<HomeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,20 +52,17 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductsListAdapter.ItemA
         }
 
         setUpFab(isAdminFlow)
-        CoroutineScope(Dispatchers.IO).launch {
-            isAdminFlow.collect {isAdmin ->
-                if(isAdmin){
-                    val serviceIntent = Intent(requireContext(), ReviewListeningService::class.java)
-                    requireContext().startService(serviceIntent)
-                }
-            }
-        }
+
 
         binding.productsRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
 
         viewModel.getProducts().observe(viewLifecycleOwner) {
-            binding.productsRecyclerView.adapter = ProductsListAdapter(requireContext(), it as ArrayList<Product>,this)
+            binding.productsRecyclerView.adapter = ProductsListAdapter(
+                requireContext(),
+                it as ArrayList<Product>,
+                this
+            )
             if(it.isEmpty()){
                 binding.emptyView.visibility = View.VISIBLE
             }else{
@@ -98,9 +95,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductsListAdapter.ItemA
     }
 
 
-
     override fun onItemClicked(product: Product) {
         val action = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(product)
         findNavController().navigate(action)
+    }
+
+    override fun onRemoveClicked(product: Product) {
+        val db = FirebaseFirestore.getInstance()
+        val productsCollectionRef = db.collection(KEY_COLLECTION_PRODUCTS)
+        productsCollectionRef.document(product.id).delete()
     }
 }

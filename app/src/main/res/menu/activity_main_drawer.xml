@@ -5,20 +5,21 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="none">
+
         <item
-            android:id="@+id/all_users"
+            android:id="@+id/allUsersFragment"
             android:title="All Users"
             android:icon="@drawable/ic_baseline_people_24"
             app:iconTint="@color/primaryColor"/>
 
         <item
-            android:id="@+id/blocked_users"
+            android:id="@+id/blockedUsersFragment"
             android:icon="@drawable/ic_blocked_users"
             android:title="Blocked Users"
             app:iconTint="@color/primaryColor"/>
 
         <item
-            android:id="@+id/spams"
+            android:id="@+id/spamsFragment"
             android:icon="@drawable/ic_spam"
             android:title="Spam"
             app:iconTint="@color/primaryColor"/>

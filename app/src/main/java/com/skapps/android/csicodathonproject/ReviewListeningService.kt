@@ -2,12 +2,17 @@ package com.skapps.android.csicodathonproject
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.firestore.FirebaseFirestore
+import com.skapps.android.csicodathonproject.machinelearning.TextClassificationClient
 import com.skapps.android.csicodathonproject.ui.CHANNEL_REVIEW_LISTENER
+import com.skapps.android.csicodathonproject.util.KEY_SUB_COLLECTION_REVIEWS
+import kotlinx.coroutines.launch
 
 /**
  * Created by Syed Umair on 18/12/2020.
@@ -28,17 +33,38 @@ class ReviewListeningService(): LifecycleService() {
         super.onStartCommand(intent, flags, startId)
         notificationManager = NotificationManagerCompat.from(this)
 
-        db.collectionGroup("reviews").addSnapshotListener { docSnapshots, error ->
+        db.collectionGroup(KEY_SUB_COLLECTION_REVIEWS).addSnapshotListener { docSnapshots, error ->
             if( error != null){
                 stopSelf()
             }
 
             val spamDetails = MutableLiveData<List<String>>()
             spamDetails.observe(this){
-                notificationBuilder = notificationForReview(it[0], it[1], it[2])
-                notificationManager.notify(SERVICE_NOTIFICATION_ID, notificationBuilder.build())
-                spamDetails.removeObservers(this)
+                // logically detected a spam
+                val name = it[0]
+                val heading = it[1]
+                val description = it[2]
+                val rid = it[3]
+
+                lifecycleScope.launch {
+
+                    val isSpam = useClassificationModel(description)
+
+                    if(isSpam){
+                        Log.d(TAG, "onStartCommand: isSpam = $isSpam -- review == $heading")
+                        notificationBuilder = notificationForReview(name, heading, rid,
+                            "Alert! Spam detected") // both logically(multiple reviews by same user) and using ML
+                        notificationManager.notify(SERVICE_NOTIFICATION_ID, notificationBuilder.build())
+
+                    }else{
+                        notificationBuilder = notificationForReview(name, heading, rid,
+                            "Potential Spam detected!") // only logically(multiple reviews by same user)
+                        notificationManager.notify(SERVICE_NOTIFICATION_ID, notificationBuilder.build())
+                    }
+                }
+                spamDetails.removeObservers(this@ReviewListeningService)
             }
+
 
 
 
@@ -58,6 +84,7 @@ class ReviewListeningService(): LifecycleService() {
                                     // means multiple reviews of same user(uid) on product (pid)
                                     spamDetails.postValue(listOf(
                                         docSnap.document.getString("name")?:"",
+                                        docSnap.document.getString("heading")?:"",
                                         docSnap.document.getString("description")?:"",
                                         docSnap.document.id))
 
@@ -66,9 +93,29 @@ class ReviewListeningService(): LifecycleService() {
                                         productReviews.document(doc.id).update("spam", true)
                                         // potential spam detected
                                     }
+                                }else{
+                                    // Logically not spam. Now trying using classification model
+                                    lifecycleScope.launch {
+                                        val isSpam = useClassificationModel(
+                                            docSnap.document.getString("description")?:"")
+                                        if (isSpam) {
+                                            Log.d(TAG, "onStartCommand: isSpam = $isSpam -- review == ${docSnap.document.getString("heading")}")
+
+                                            productReviews.document(docSnap.document.id).update("spam", true)
+                                            notificationBuilder = notificationForReview(
+                                                docSnap.document.getString("name")?:"",
+                                                docSnap.document.getString("heading")?:"",
+                                                docSnap.document.id,
+                                                "Potential Spam detected!"
+                                            )
+                                            notificationManager.notify(
+                                                SERVICE_NOTIFICATION_ID,
+                                                notificationBuilder.build()
+                                            )
+                                        }
+                                    }
                                 }
                             }
-
                     }
                 }
             }
@@ -77,7 +124,7 @@ class ReviewListeningService(): LifecycleService() {
         return START_STICKY
     }
 
-    private fun notificationForReview(name:String, reviewDes: String, rid: String): NotificationCompat.Builder{
+    private fun notificationForReview(name:String, reviewHeading: String, rid: String, notTitle: String): NotificationCompat.Builder{
 
         val broadcastIntent = Intent(this, NotificationReceiver::class.java)
         broadcastIntent.putExtra("rid", rid)
@@ -88,12 +135,21 @@ class ReviewListeningService(): LifecycleService() {
 
         return NotificationCompat.Builder(this, CHANNEL_REVIEW_LISTENER)
             .setSmallIcon(R.drawable.ic_baseline_notification_important_24)
-            .setContentTitle("Potential Spam Detected")
-            .setContentText("\"$reviewDes\" by $name")
+            .setContentTitle(notTitle)
+            .setContentText("\"$reviewHeading\" by $name")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setOngoing(false)
             .setOnlyAlertOnce(true)
             .addAction(R.mipmap.ic_launcher, "Check", actionIntent)
+    }
+
+    private suspend fun useClassificationModel(description: String): Boolean{
+        // using classification
+        val classification = TextClassificationClient(this@ReviewListeningService)
+        classification.load()
+        val resultList = classification.classify(description)
+        classification.unload()
+        return resultList[0] < resultList[1] // 0 => truthful   1=>spam
     }
 
 }

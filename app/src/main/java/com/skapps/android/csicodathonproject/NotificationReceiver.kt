@@ -16,7 +16,6 @@ class NotificationReceiver : BroadcastReceiver() {
         Log.d(TAG, "onReceive: called____ ")
 
 
-
     }
 
 }

@@ -21,6 +21,7 @@ class ProductsListAdapter(
 
     interface ItemAdapterListener {
         fun onItemClicked(product: Product)
+        fun onRemoveClicked(product: Product)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
@@ -49,6 +50,14 @@ class ProductsListAdapter(
                 if(position != RecyclerView.NO_POSITION){
                     val item = productList[position]
                     listener.onItemClicked(item)
+                }
+            }
+
+            binding.close.setOnClickListener {
+                val position = adapterPosition
+                if(position != RecyclerView.NO_POSITION){
+                    val item = productList[position]
+                    listener.onRemoveClicked(item)
                 }
             }
         }

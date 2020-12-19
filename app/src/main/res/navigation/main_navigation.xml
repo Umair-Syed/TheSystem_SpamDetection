@@ -8,14 +8,22 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.skapps.android.csicodathonproject.ui.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Products"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_addProductFragment"
-            app:destination="@id/addProductFragment" />
+            app:destination="@id/addProductFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
         <action
             android:id="@+id/action_homeFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/allUsersFragment"
@@ -37,7 +45,11 @@
             app:argType="com.skapps.android.csicodathonproject.data.models.Product" />
         <action
             android:id="@+id/action_productDetailsFragment_to_reviewsFragment"
-            app:destination="@id/reviewsFragment" />
+            app:destination="@id/reviewsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/reviewsFragment"
@@ -49,7 +61,11 @@
             app:argType="com.skapps.android.csicodathonproject.data.models.Product" />
         <action
             android:id="@+id/action_reviewsFragment_to_reviewDetailsFragment"
-            app:destination="@id/reviewDetailsFragment" />
+            app:destination="@id/reviewDetailsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/reviewDetailsFragment"
@@ -60,4 +76,18 @@
             android:name="review"
             app:argType="com.skapps.android.csicodathonproject.data.models.Review" />
     </fragment>
+    <fragment
+        android:id="@+id/spamsFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.home.SpamsFragment"
+        android:label="Spams"
+        tools:layout="@layout/fragment_spams" >
+        <action
+            android:id="@+id/action_spamsFragment_to_reviewDetailsFragment"
+            app:destination="@id/reviewDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blockedUsersFragment"
+        android:name="com.skapps.android.csicodathonproject.ui.home.BlockedUsersFragment"
+        android:label="Blocked Users"
+        tools:layout="@layout/fragment_blocked_users" />
 </navigation>
