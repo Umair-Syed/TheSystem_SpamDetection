@@ -14,3 +14,4 @@ Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STAT
 </ol>
 
 [<h1>Download APK</h1>](https://drive.google.com/file/d/1_ksjtQ8FPESf8OaGIM7EoAdhgnThvXyp/view)
+<i>Note:</i> <p> This app is not fully tested so unexpected behaviour may occur in some devices</p>
