@@ -66,8 +66,6 @@ class ReviewListeningService(): LifecycleService() {
             }
 
 
-
-
             if (docSnapshots != null) {
                 for(docSnap in docSnapshots.documentChanges){
 

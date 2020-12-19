@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_add_24"
-        app:backgroundTint="@color/primaryColor"
+        app:backgroundTint="@android:color/holo_orange_dark"
         app:maxImageSize="35dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
