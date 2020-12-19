@@ -23,6 +23,9 @@ A sophisticated system is built to detect spam review. Detection process involve
   <li>Machine learning classification model (using Tensorflow lite) is used to analyze text and classify review into <i>truthful</i> or <i>deceptive</i>.
       Dataset is downloaded from Kaggle</li>
 </ol>
+<blockquote>If a review is detected as spam in both the phases, then review is confirmed to be spam and <b>Alert Notification</b> is show to admin.
+  If review is detected as spam in anyone of the phase, then review is marked as <i>potential spam</i> and admin is notified.</blockquote>
+
 
 [<h3>Check out Jupyter Notebook</h3>](classification.ipynb)
 Tensorflow lite is used to embed model into Android app.
