@@ -136,12 +136,12 @@ class LoginThirdFragment : Fragment(R.layout.fragment_login_third) {
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     Snackbar.make(
                         requireView(), "Verification Failed. Make Sure Phone Number is Valid.",
-                        Snackbar.LENGTH_SHORT
+                        Snackbar.LENGTH_LONG
                     ).show()
                 } else if (e is FirebaseTooManyRequestsException) {
                     // The SMS quota for the project has been exceeded
                     Snackbar.make(
-                        requireView(), "OTP Quota exceeded. Try Again Later.",
+                        requireView(), "You tried many times. Now try again later.",
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }

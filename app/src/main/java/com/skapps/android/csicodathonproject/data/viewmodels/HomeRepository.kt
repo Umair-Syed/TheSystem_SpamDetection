@@ -33,6 +33,7 @@ class HomeRepository @Inject constructor() {
                         docSnapshot.getString("name") ?: "",
                         docSnapshot.getString("description") ?: "",
                         docSnapshot.getString("imageUrl") ?: "",
+                        docSnapshot.getString("price") ?: "0",
                         docSnapshot.getDouble("rating") ?: 0.0,
                         docSnapshot.getLong("ratingCount") ?: 0
                     )

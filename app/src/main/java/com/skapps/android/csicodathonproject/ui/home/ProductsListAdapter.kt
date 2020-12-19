@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.skapps.android.csicodathonproject.R
 import com.skapps.android.csicodathonproject.data.models.Product
 import com.skapps.android.csicodathonproject.databinding.ListItemProductBinding
@@ -69,9 +70,11 @@ class ProductsListAdapter(
                     title.text = currentProduct.name
                     description.text = currentProduct.description
                     title.text = currentProduct.name
+                    price.text = "\u20b9 ${currentProduct.price}"
                     ratingBar.rating = currentProduct.rating.toFloat()
                     Glide.with(context).load(currentProduct.imageUrl)
-                        .placeholder(R.drawable.placeholder_image)
+                        .placeholder(R.drawable.ic_baseline_image_black)
+                        .transition(DrawableTransitionOptions.withCrossFade(200))
                         .into(imageHolder)
             }
         }

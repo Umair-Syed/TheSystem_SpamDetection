@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/ic_baseline_image_black" />
 
         <TextView
             android:id="@+id/title"
@@ -84,5 +84,17 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/image_holder"
             app:layout_constraintStart_toStartOf="@+id/description" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:text="\u20b9 100"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+            app:layout_constraintEnd_toEndOf="@+id/close"
+            app:layout_constraintTop_toTopOf="@+id/ratingBar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

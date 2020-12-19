@@ -45,6 +45,22 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:hint="Price (\u20b9) *"
+        app:boxStrokeColor="@color/secondaryColor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@drawable/round_rect_white"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,8 +72,8 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="12dp"
-            android:src="@drawable/ic_baseline_image_24"
-            app:tint="@color/secondaryColor" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_image_24"/>
 
         <TextView
             android:id="@+id/select_image_btn"
