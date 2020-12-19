@@ -24,6 +24,8 @@ A sophisticated system is built to detect spam review. Detection process involve
       Dataset is downloaded from Kaggle</li>
 </ol>
 
+[Check out Jupyter Notebook](classification.ipynb)
+
 <h2>Screenshots</h2>
 
 <table >
