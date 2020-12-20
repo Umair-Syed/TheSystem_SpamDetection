@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.machinelearning.TextClassificationClient
 import com.skapps.android.csicodathonproject.ui.CHANNEL_REVIEW_LISTENER
+import com.skapps.android.csicodathonproject.util.KEY_COLLECTION_PRODUCTS
 import com.skapps.android.csicodathonproject.util.KEY_SUB_COLLECTION_REVIEWS
 import kotlinx.coroutines.launch
 
@@ -73,8 +74,8 @@ class ReviewListeningService(): LifecycleService() {
                     val uid = docSnap.document.getString("uid")
 
                     if (pid != null) {
-                        val productReviews = db.collection("products")
-                            .document(pid).collection("reviews")
+                        val productReviews = db.collection(KEY_COLLECTION_PRODUCTS)
+                            .document(pid).collection(KEY_SUB_COLLECTION_REVIEWS)
 
                         productReviews.whereEqualTo("uid",uid).get()
                             .addOnSuccessListener {

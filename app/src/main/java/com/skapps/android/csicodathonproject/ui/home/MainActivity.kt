@@ -1,10 +1,13 @@
 package com.skapps.android.csicodathonproject.ui.home
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -46,7 +49,7 @@ import kotlinx.coroutines.launch
 private const val TAG = "MainActivity"
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
     private lateinit var binding: ActivityMainBinding
     private val db = FirebaseFirestore.getInstance()
     private val usersCollectionRef = db.collection(KEY_COLLECTION_USERS)
@@ -95,17 +98,20 @@ class MainActivity : AppCompatActivity(){
                         finish()
                     }
                 }
-                setPositiveButton("NO") {
-                        dialog, _ -> dialog.cancel()
+                setPositiveButton("NO") { dialog, _ -> dialog.cancel()
                 }
                 show()
             }
         }
 
+        // spam detection service
         CoroutineScope(Dispatchers.IO).launch {
             isAdminFlow.collect { isAdmin ->
                 if(isAdmin){
-                    val serviceIntent = Intent(this@MainActivity, ReviewListeningService::class.java)
+                    val serviceIntent = Intent(
+                        this@MainActivity,
+                        ReviewListeningService::class.java
+                    )
                     this@MainActivity.startService(serviceIntent)
                 }
             }
@@ -122,6 +128,7 @@ class MainActivity : AppCompatActivity(){
         mAppBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         setupActionBarWithNavController(navController, mAppBarConfiguration)
 
+        navigationView.setNavigationItemSelectedListener(this)
 
         val header = navigationView.getHeaderView(0)
         val name = header.findViewById<TextView>(R.id.navName)
@@ -130,7 +137,7 @@ class MainActivity : AppCompatActivity(){
 
         // show email and name in NavDrawer Header
         usersCollectionRef.document(user!!.uid).get()
-            .addOnSuccessListener {documentSnapshot->
+            .addOnSuccessListener { documentSnapshot->
                 if (documentSnapshot?.exists()!!) {
                     nameEmail[0] = documentSnapshot.getString(KEY_USER_DOC_NAME) //name
                     nameEmail[1] = documentSnapshot.getString(KEY_USER_DOC_EMAIL) //email
@@ -143,13 +150,16 @@ class MainActivity : AppCompatActivity(){
         val menu = navigationView.menu
         val blockedUsersItem = menu.findItem(R.id.blockedUsersFragment)
         val spamItem = menu.findItem(R.id.spamsFragment)
+        val contactAdmin = menu.findItem(R.id.contact_admin)
         Log.d(TAG, "setUpNavigationDrawer: isAdmin == $isAdmin")
         if(isAdmin){
             blockedUsersItem?.isVisible = true
             spamItem?.isVisible = true
+            contactAdmin?.isVisible = false
         }else{
             blockedUsersItem?.isVisible = false
             spamItem?.isVisible = false
+            contactAdmin?.isVisible = true
         }
 
     }
@@ -176,4 +186,35 @@ class MainActivity : AppCompatActivity(){
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
         Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val handled = NavigationUI.onNavDestinationSelected(item, navController)
+
+        if(!handled){
+            when(item.itemId){
+                R.id.contact_admin -> {
+                    val emailIntent = Intent(Intent.ACTION_SEND)
+                    val TO = arrayOf("admin@thesystem.com")
+                    val CC = arrayOf("")
+                    emailIntent.setPackage("com.google.android.gm")
+                    emailIntent.data = Uri.parse("mailto:")
+                    emailIntent.type = "text/plain"
+                    emailIntent.putExtra(Intent.EXTRA_EMAIL, TO)
+                    emailIntent.putExtra(Intent.EXTRA_CC, CC)
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "User unblock request")
+
+                    try {
+                        startActivity(Intent.createChooser(emailIntent, "Send mail..."))
+                    } catch (ex: ActivityNotFoundException) {
+                        Toast.makeText(this, "No email client installed!", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        }
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return handled
+    }
+
+
 }

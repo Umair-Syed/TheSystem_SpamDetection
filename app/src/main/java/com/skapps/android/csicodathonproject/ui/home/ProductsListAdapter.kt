@@ -1,14 +1,27 @@
 package com.skapps.android.csicodathonproject.ui.home
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.preferencesKey
+import androidx.datastore.preferences.createDataStore
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.skapps.android.csicodathonproject.R
 import com.skapps.android.csicodathonproject.data.models.Product
 import com.skapps.android.csicodathonproject.databinding.ListItemProductBinding
+import com.skapps.android.csicodathonproject.ui.login.DATA_STORE_KEY
+import com.skapps.android.csicodathonproject.ui.login.PREF_KEY_IS_ADMIN
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 /**
  * Created by Syed Umair on 18/12/2020.
@@ -51,6 +64,30 @@ class ProductsListAdapter(
                 if(position != RecyclerView.NO_POSITION){
                     val item = productList[position]
                     listener.onItemClicked(item)
+                }
+            }
+
+            // get isAdmin from data store
+            val dataStore: DataStore<Preferences> = context.createDataStore(
+                name = DATA_STORE_KEY
+            )
+            val isAdminKey = preferencesKey<Boolean>(PREF_KEY_IS_ADMIN)
+            val isAdminFlow: Flow<Boolean> = dataStore.data.map {
+                it[isAdminKey] ?: false
+            }
+
+            GlobalScope.launch {
+                isAdminFlow.collect {isAdmin ->
+                    try {
+                        if (isAdmin){
+                            binding.close.visibility = View.VISIBLE
+                        }else{
+                            binding.close.visibility = View.INVISIBLE
+                        }
+                    }catch (e: NullPointerException){
+                        Log.e("ProductsListAdapter", e.message ?: "close button is null")
+                    }
+
                 }
             }
 

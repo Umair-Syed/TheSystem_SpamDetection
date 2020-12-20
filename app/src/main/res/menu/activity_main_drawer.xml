@@ -23,6 +23,12 @@
             android:icon="@drawable/ic_spam"
             android:title="Spam"
             app:iconTint="@color/primaryColor"/>
+
+        <item
+            android:id="@+id/contact_admin"
+            android:title="Contact Admin"
+            android:icon="@drawable/ic_baseline_contact_phone_24"
+            android:iconTint="@color/primaryColor"/>
     </group>
 
 </menu>
