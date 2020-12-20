@@ -5,10 +5,10 @@ Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STAT
 <ol>
   <li>Login as Admin or User.</li>
   <li>OTP Authentication</li>
-  <li>Add new product (only for admin). Admin can choose <i>Name, description and Image</i> for product</li>
+  <li>Add new product (only for admin). Admin can choose <i>Name, description, price and Image</i> for product</li>
   <li>View products</li>
   <li>Write a review (only for user).</li>
-  <li>Delete review, block user (only for admin)</li>
+  <li>Delete review, block/unblock user (only for admin)</li>
   <li><b>Notification, if new spam review is detected</b> (only for admin)</li>
   <li>Remove Products</li>
 </ol>
