@@ -98,7 +98,7 @@ class ReviewListeningService(): LifecycleService() {
                                         val isSpam = useClassificationModel(
                                             docSnap.document.getString("description")?:"")
                                         if (isSpam) {
-                                            Log.d(TAG, "onStartCommand: isSpam = $isSpam -- review == ${docSnap.document.getString("heading")}")
+                                            Log.d(TAG, "onStartCommand: (only Classifier) isSpam = $isSpam -- review == ${docSnap.document.getString("heading")}")
 
                                             productReviews.document(docSnap.document.id).update("spam", true)
                                             notificationBuilder = notificationForReview(
@@ -147,8 +147,31 @@ class ReviewListeningService(): LifecycleService() {
         val classification = TextClassificationClient(this@ReviewListeningService)
         classification.load()
         val resultList = classification.classify(description)
+        Log.d(TAG, "useClassificationModel: RESULT Classify $resultList")
         classification.unload()
-        return resultList[0] < resultList[1] // 0 => truthful   1=>spam
-    }
+        Log.d(TAG, "useClassificationModel: ${resultList[0].confidence}")
 
+        var zero :Float  = 0F
+        var one :Float = 0F
+        if(resultList[0].confidence != null && resultList[0].confidence != null){
+            for(i in resultList){
+                if(i.title != null && i.title == "0"){
+                    zero = i.confidence!!
+                }else{
+                    one = i.confidence!!
+                }
+            }
+
+//            if(resultList[0].confidence!! < resultList[1].confidence!!){// 0 => truthful   1=>spam
+//                Log.d(TAG, "useClassificationModel: SPAMMMMMM")
+//                return true
+//            }else{
+//                return false
+//            }
+        }
+
+        Log.d(TAG, "useClassificationModel: ${zero < one}")
+        return zero < one
+
+    }
 }
