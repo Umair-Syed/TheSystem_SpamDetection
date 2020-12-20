@@ -5,16 +5,15 @@ Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STAT
 <ol>
   <li>Login as Admin or User.</li>
   <li>OTP Authentication</li>
-  <li>Add new product (only for admin). Admin can choose <i>Name, description and Image</i> for product</li>
+  <li>Add new product (only for admin). Admin can choose <i>Name, description, price and Image</i> for product</li>
   <li>View products</li>
   <li>Write a review (only for user).</li>
-  <li>Delete review, block user (only for admin)</li>
+  <li>Delete review, block/unblock user (only for admin)</li>
   <li><b>Notification, if new spam review is detected</b> (only for admin)</li>
   <li>Remove Products</li>
 </ol>
 
 [<h3>Download APK</h3>](https://drive.google.com/file/d/1upYLB8OaC1YOneYHoxV9WRbCFGbabEQi/view?usp=sharing)
-[<h4>Download APK</h4>](https://drive.google.com/file/d/1_ksjtQ8FPESf8OaGIM7EoAdhgnThvXyp/view)
 <b>Note:</b> This app is not fully tested so unexpected behaviour may occur in some devices.
 
 <h2>Spam detection</h2>
