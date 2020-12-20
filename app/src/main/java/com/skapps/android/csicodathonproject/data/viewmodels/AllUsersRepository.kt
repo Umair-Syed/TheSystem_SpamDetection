@@ -12,17 +12,15 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class BlockedUsersRepository @Inject constructor() {
+class AllUsersRepository @Inject constructor() {
 
-    fun fetchBlockedUsers(): MutableLiveData<List<SUser>> {
+    fun fetchAllUsers(): MutableLiveData<List<SUser>> {
 
         val db = FirebaseFirestore.getInstance()
         val usersCollectionRef = db.collection(KEY_COLLECTION_USERS)
-        val blockedUsersList = MutableLiveData<List<SUser>>()
+        val usersList = MutableLiveData<List<SUser>>()
 
-        val query = usersCollectionRef.whereEqualTo("blocked", true)
-
-        query.addSnapshotListener { queryDocSnapshot, error ->
+        usersCollectionRef.addSnapshotListener { queryDocSnapshot, error ->
             if (error != null) {
                 return@addSnapshotListener
             }
@@ -30,18 +28,19 @@ class BlockedUsersRepository @Inject constructor() {
             if (queryDocSnapshot != null) {
                 val list = ArrayList<SUser>()
                 for (docSnapshot in queryDocSnapshot) {
-                    val blockedUser = SUser(
+                    val user = SUser(
                         docSnapshot.getString("name") ?: "",
                         docSnapshot.getString("email") ?: "",
                         docSnapshot.getBoolean("admin") ?: false,
                         docSnapshot.getBoolean("blocked") ?: true,
                         docSnapshot.getBoolean("active") ?: true
+
                     )
-                    list.add(blockedUser)
+                    list.add(user)
                 }
-                blockedUsersList.postValue(list)
+                usersList.postValue(list)
             }
         }
-        return blockedUsersList
+        return usersList
     }
 }

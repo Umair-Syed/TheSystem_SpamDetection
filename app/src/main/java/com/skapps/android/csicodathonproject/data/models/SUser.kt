@@ -8,5 +8,6 @@ data class SUser(
     val name: String,
     val email: String,
     val admin: Boolean,
-    val blocked: Boolean
+    val blocked: Boolean,
+    val active: Boolean
 )

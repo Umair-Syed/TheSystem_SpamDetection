@@ -31,6 +31,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.skapps.android.csicodathonproject.R
 import com.skapps.android.csicodathonproject.ReviewListeningService
+import com.skapps.android.csicodathonproject.UserStatusService
 import com.skapps.android.csicodathonproject.databinding.ActivityMainBinding
 import com.skapps.android.csicodathonproject.ui.login.DATA_STORE_KEY
 import com.skapps.android.csicodathonproject.ui.login.LoginActivity
@@ -93,6 +94,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 setTitle("Are you sure you want to sign out?")
                 setNegativeButton("YES"){ _, _ ->
                     if(user != null){
+                        usersCollectionRef.document(user?.uid!!).update("active", false)
                         FirebaseAuth.getInstance().signOut()
                         startActivity(intent)
                         finish()
@@ -216,5 +218,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return handled
     }
 
+    override fun onStart() {
+        super.onStart()
+        usersCollectionRef.document(user?.uid!!).update("active", true)
+    }
 
+    override fun onStop() {
+        super.onStop()
+        CoroutineScope(Dispatchers.IO).launch {
+            val serviceIntent = Intent(
+                this@MainActivity,
+                UserStatusService::class.java
+            )
+            this@MainActivity.startService(serviceIntent)
+        }
+    }
 }

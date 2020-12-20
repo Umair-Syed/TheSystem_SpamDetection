@@ -29,6 +29,7 @@
         <receiver android:name=".NotificationReceiver" />
 
         <service android:name=".ReviewListeningService"/>
+        <service android:name=".UserStatusService"/>
 
     </application>
 
