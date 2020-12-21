@@ -27,39 +27,10 @@ A sophisticated system is built to detect spam review. Detection process involve
 [<h3>Check out Jupyter Notebook</h3>](classification.ipynb)
 Tensorflow lite is used to embed model into Android app.
 
-<h2>Screenshots</h2>
-<table >
-  <tr>
-    <td><img src="/screenshots/sc1.jpg" height="150%"></td>
-    <td><img src="/screenshots/sc9.jpg" height="40%" ></td>
-  </tr>
-  
-  <tr>
-    <td><img src="/screenshots/sc2.jpg" height="40%" ></td>
-    <td><img src="/screenshots/sc3.jpg" height="40%" ></td>
-  </tr>
-   <tr>
-    <td><img src="/screenshots/sc4.jpg" height="40%" ></td>
-    <td><img src="/screenshots/sc5.jpg" height="40%" ></td>
-  </tr>
-   <tr>
-    <td><img src="/screenshots/sc6.jpg" height="40%" ></td>
-    <td><img src="/screenshots/sc7.jpg" height="40%" ></td>
-  </tr>
-   <tr>
-    <td><img src="/screenshots/sc8.jpg" height="40%" ></td>   
-  </tr>
-</table>
-
 
 ## Screens
-List & Layouts             |  Widgets and building blocks| Animations
+Login             |  Write a review| Spam detection
 :-------------------------:|:-------------------------: | :-------------------------:
-![](/screenshots/sc4.jpg)  |  ![](/screenshots/sc5.jpg) | ![](/screenshots/sc6.jpg)
-
-
-
-
-
+![](/screenshots/sc1.jpg)  |  ![](/screenshots/sc6.jpg) | ![](/screenshots/sc9.jpg)
 
    
