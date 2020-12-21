@@ -1,4 +1,4 @@
-# CSI-JK-STATE-STUDENT-CONVENTION-2020.
+<h1 align="center"> The System - Android Application</h1>
 Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STATE STUDENT CONVENTION 2020.<br>
 <b>Update: This Project was awarded the FIRST prize</b>
 
