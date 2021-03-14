@@ -31,31 +31,31 @@ A sophisticated system is built to detect spam reviews. Detection process involv
 [<h3>Check out Jupyter Notebook</h3>](classification.ipynb)
 Tensorflow lite is used to embed model into Android app.
 
-<h2>Screenshots</h2>
-<table >
-  <tr>
-    <td><img src="/screenshots/sc1.jpg" height="150%"></td>
-    <td><img src="/screenshots/sc9.jpg" height="40%" ></td>
-  </tr>
-  
-  <tr>
-    <td><img src="/screenshots/sc2.jpg" height="20%"  ></td>
-    <td><img src="/screenshots/sc3.jpg" height="20%" ></td>
-  </tr>
-   <tr>
-    <td><img src="/screenshots/sc4.jpg" height="40%" ></td>
-    <td><img src="/screenshots/sc5.jpg" height="40%" ></td>
-  </tr>
-   <tr>
-    <td><img src="/screenshots/sc6.jpg" height="40%" ></td>
-    <td><img src="/screenshots/sc7.jpg" height="40%" ></td>
-  </tr>
-   <tr>
-    <td><img src="/screenshots/sc8.jpg" height="40%" ></td>   
-    <td><img src="/screenshots/sc10.jpg" height="40%" ></td>   
-  </tr>
-</table>
+
+### Screenshots
+Welcome Page           | Login via Phone 
+:-------------------------:|:-------------------------: 
+![](/screenshots/sc1.jpg)  |  ![](/screenshots/sc3.1.jpg)
+
+Submit OTP           | Submit details Page
+:-------------------------:|:-------------------------: 
+![](/screenshots/sc3.2.jpg)  |  ![](/screenshots/sc2.jpg)
 
 
+Home page (Notification for admin) | Add Product (admin feat.)
+:-------------------------:|:-------------------------: 
+![](/screenshots/sc9.jpg)  |  ![](/screenshots/sc4.jpg)
 
 
+Write Review (user)          | Review Details (admin)
+:-------------------------:|:-------------------------: 
+![](/screenshots/sc6.jpg)  |  ![](/screenshots/sc7.jpg)
+
+
+Navigation         | Reviews Page
+:-------------------------:|:-------------------------: 
+![](/screenshots/sc5.jpg)  |  ![](/screenshots/sc8.jpg)
+
+When admin blocks user. User opens app, get this msg 
+:-------------------------:
+![](/screenshots/sc10.jpg)  
