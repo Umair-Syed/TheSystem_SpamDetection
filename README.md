@@ -39,8 +39,8 @@ Tensorflow lite is used to embed model into Android app.
   </tr>
   
   <tr>
-    <td><img src="/screenshots/sc2.jpg" height="40%" ></td>
-    <td><img src="/screenshots/sc3.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc2.jpg" height="20%"  ></td>
+    <td><img src="/screenshots/sc3.jpg" height="20%" ></td>
   </tr>
    <tr>
     <td><img src="/screenshots/sc4.jpg" height="40%" ></td>
