@@ -1,5 +1,6 @@
-# CSI-JK-STATE-STUDENT-CONVENTION-2020.
-Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STATE STUDENT CONVENTION 2020.
+<h1 align="center"> The System - Android Application</h1>
+Team, <i>The Developers</i>'s project for Codathon event for the 6th CSI JK STATE STUDENT CONVENTION 2020.<br>
+<b>Update: This Project was awarded the FIRST prize</b>
 
 <h3>Features:</h3>
 <ol>
@@ -38,8 +39,8 @@ Tensorflow lite is used to embed model into Android app.
   </tr>
   
   <tr>
-    <td><img src="/screenshots/sc2.jpg" height="40%" ></td>
-    <td><img src="/screenshots/sc3.jpg" height="40%" ></td>
+    <td><img src="/screenshots/sc2.jpg" height="20%"  ></td>
+    <td><img src="/screenshots/sc3.jpg" height="20%" ></td>
   </tr>
    <tr>
     <td><img src="/screenshots/sc4.jpg" height="40%" ></td>
