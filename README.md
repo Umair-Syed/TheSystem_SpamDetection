@@ -32,7 +32,15 @@ A sophisticated system is built to detect spam reviews. Detection process involv
 Tensorflow lite is used to embed model into Android app.
 
 
-### Screenshots
+### Phone numbers for testing:
+Phone number          | Verification code
+:-------------------------:|:-------------------------: 
++91 5555 555 555  |  	123456
++91 11 1111 1111  |  	111111
++91 88888 88888  |  	888888
+
+
+## Screenshots
 Welcome Page           | Login via Phone 
 :-------------------------:|:-------------------------: 
 ![](/screenshots/sc1.jpg)  |  ![](/screenshots/sc3.1.jpg)
