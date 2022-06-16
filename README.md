@@ -35,7 +35,7 @@ Tensorflow lite is used to embed model into Android app.
 ### Phone numbers for testing:
 Phone number          | Verification code
 :-------------------------:|:-------------------------: 
-+91 5555 555 555  |  	123456
++91 66666 66666  |  	666666
 +91 11 1111 1111  |  	111111
 +91 88888 88888  |  	888888
 
