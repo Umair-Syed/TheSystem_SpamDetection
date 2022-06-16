@@ -29,7 +29,9 @@ A sophisticated system is built to detect spam reviews. Detection process involv
 
 
 [<h3>Check out Jupyter Notebook</h3>](classification.ipynb)
-Tensorflow lite is used to embed model into Android app.
+Tensorflow lite is used to embed model into Android app. <br>
+Model resides in app/src/main/assets/model.tflite
+
 
 
 ### Phone numbers for testing:
