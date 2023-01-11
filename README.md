@@ -70,4 +70,4 @@ When admin blocks user. User opens app, get this msg
 :-------------------------:
 ![](/screenshots/sc10.jpg)  
 
-Note: This app was developed in hurry because of limited time in hacakathon. So bugs and issues are expected.
+Note: This app was developed in hurry because of limited time in hackathon. So bugs and issues are expected.
