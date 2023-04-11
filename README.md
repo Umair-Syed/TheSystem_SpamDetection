@@ -66,7 +66,7 @@ Navigation         | Reviews Page
 :-------------------------:|:-------------------------: 
 ![](/screenshots/sc5.jpg)  |  ![](/screenshots/sc8.jpg)
 
-When admin blocks user. User opens app, get this msg 
+When admin blocks the user and next time user opens app, gets this msg 
 :-------------------------:
 ![](/screenshots/sc10.jpg)  
 
